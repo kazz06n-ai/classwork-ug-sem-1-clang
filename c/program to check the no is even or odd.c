@@ -7,10 +7,10 @@ int main() {
     int no;
     scanf("%d", &no);
     if (no % 2 == 0) {
-        printf("inside the if block");
         printf("%d the no is even",no);
-        no++;
     }
-    printf("the value of orignal no %d",no);
+    else{
+        printf("%d the no is odd",no)
+    }
     return 0;
 }
