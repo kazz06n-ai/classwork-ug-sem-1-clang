@@ -1,58 +1,37 @@
 #include <stdio.h>
 
-int main() {
-    int m, n, p;
+int main(void){
 
-    // Input sizes
-    printf("Enter rows and columns of first matrix (m n): ");
-    scanf("%d %d", &m, &n);
+    int array1[3][3];
+    int array2[3][3];
+    int result[3][3];
 
-    printf("Enter columns of second matrix (p): ");
-    scanf("%d", &p);
-
-    // Declare matrices
-    int A[m][n], B[n][p], C[m][p];
-
-    // Input matrix A
-    printf("Enter elements of first matrix (%d x %d):\n", m, n);
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            scanf("%d", &A[i][j]);
+    for (int i = 0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; ++j){
+            array1[i][j] = i*3+j+1;
+            array2[i][j] = i*3+j+1;
         }
     }
 
-    // Input matrix B
-    printf("Enter elements of second matrix (%d x %d):\n", n, p);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < p; j++) {
-            scanf("%d", &B[i][j]);
-        }
-    }
 
-    // Initialize result matrix
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < p; j++) {
-            C[i][j] = 0;
-        }
-    }
 
-    // Matrix multiplication
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < p; j++) {
-            for (int k = 0; k < n; k++) {
-                C[i][j] += A[i][k] * B[k][j];
+
+    for(int i = 0;i < 3;++i){
+        for(int j = 0; j < 3;++j){
+            int sum = 0;
+            for(int k = 0; k < 3;++k){
+                sum += array1[i][k] * array2[k][j];
             }
+            result[i][j] = sum;
         }
     }
-
-    // Print result
-    printf("Resultant Matrix (%d x %d):\n", m, p);
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < p; j++) {
-            printf("%d ", C[i][j]);
+    for (int i = 0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; ++j){
+            printf("%d ",result[i][j]);
         }
         printf("\n");
     }
 
-    return 0;
 }
